@@ -1,0 +1,538 @@
+html, body, .grid-container {
+    max-height: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    margin: auto;
+    padding: 0;
+  }
+  
+  html, body {
+    width: 100%;
+    font-family: "Roboto", "Valorant", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    line-height: 1.618;
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    font-size: 1em;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  
+  @font-face {
+    font-family: 'Valorant';
+    src: url('/assets/fonts/valorant/Valorant.woff2') format('woff2'), url('/assets/fonts/valorant/Valorant.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /* font-size f(x) = 1/phi^2 (x-1) + phi [rem] */
+  h6 {
+    font-size: 0.56rem;
+  }
+  
+  h5 {
+    font-size: 1rem;
+  }
+  
+  h4 {
+    font-size: 1.53rem;
+  }
+  
+  h3 {
+    font-size: 2.16rem;
+  }
+  
+  h2 {
+    font-size: 2.926rem;
+  }
+  
+  h1 {
+    font-size: 3.843rem;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: minmax(0%, 1fr) minmax(61.8%, 1.618fr) minmax(0%, 1fr);
+    gap: 0 0;
+    grid-template-areas: "header header header""body body body""footer footer footer";
+  }
+  
+  .header {
+    display: grid;
+    height: 6.85rem;
+    grid-template-columns: 0.146fr 0.00502fr 1.618fr 0.146fr;
+    grid-template-rows: 1fr;
+    gap: 0 0;
+    overflow: hidden;
+    grid-template-areas: "header-left divider header-middle header-right";
+    z-index: 101;
+    background-color: rgba(255, 255, 255, 0.382);
+    font-family: valorant;
+    grid-area: header;
+  }
+  
+  .header-left {
+    display: grid;
+    justify-self: center;
+    align-self: center;
+    grid-area: header-left;
+  }
+  
+  .hover-float:hover, .hover-float:focus, .hover-float:active {
+    animation: hover-frames 382ms infinite alternate;
+    animation-fill-mode: forwards;
+    transition-property: transform;
+    transition-timing-function: ease-out;
+  }
+  
+  .hover-underline-from-center::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 61.8%;
+    right: 61.8%;
+    bottom: 0;
+    background: #debe22;
+    height: 0.236rem;
+    transition-property: left, right;
+    transition-duration: 382ms;
+    transition-timing-function: ease-out;
+  }
+  
+  .hover-underline-from-center:hover::before, .hover-underline-from-center:focus::before, .hover-underline-from-center:active::before {
+    left: 0;
+    right: 0;
+  }
+  
+  @keyframes hover-frames {
+    0% {
+      transform: translateY(0);
+    }
+  
+    100% {
+      transform: translateY(-12px);
+    }
+  }
+  
+  
+  .float {
+    animation: float-frames 6854ms infinite alternate;
+    animation-timing-function: cubic-bezier(0.38, 0, 0.618, 1.0);
+  }
+  
+  @keyframes float-frames {
+    0%, 100% {
+      transform: translateY(38px);
+    }
+    38% {
+      transform: translateY(-38px);
+    }
+  }
+  
+  .header-left-divider {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1.618fr 1fr;
+  }
+  
+  .header-middle {
+    display: grid;
+    grid-area: header-middle;
+  }
+  
+  .header-right {
+    display: grid;
+    grid-area: header-right;
+  }
+  
+  .header-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(32px, 9.02%));
+    margin-left: 2.618rem;
+    gap: 0 2.618rem;
+    counter-reset: header-nav;
+  }
+  
+  .header-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0 2.618rem;
+  }
+  
+  .body {
+    display: grid;
+    position: relative;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 1.618fr) minmax(0px, 1fr);
+    grid-template-rows: 1fr;
+    gap: 0 0;
+    grid-template-areas: "nav section aside";
+    grid-area: body;
+  }
+  
+  .section {
+    display: block;
+  }
+  
+  .aside {
+    grid-area: aside;
+  }
+  
+  .nav {
+    grid-area: nav;
+  }
+  
+  .footer {
+    display: grid;
+    grid-template-columns: 1fr 1.618fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    height: 61.8vh;
+    grid-template-areas: "footer-left footer-middle footer-right";
+    grid-area: footer;
+  }
+  
+  .footer-left {
+    grid-area: footer-left;
+  }
+  
+  .footer-middle {
+    grid-area: footer-middle;
+  }
+  
+  .footer-social {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 4.24rem;
+    grid-template-areas: ". . . . .";
+    grid-area: footer-social;
+  }
+  
+  .footer-right {
+    grid-area: footer-right;
+  }
+  
+  /* For presentation only, no need to copy the code below */
+  /*.grid-container * {
+       border: 1px solid grey;
+       border-style: dashed;
+       position: relative
+  }
+   */
+  /*.grid-container *::after {
+       position: absolute;
+       top: 0;
+       left: 0
+  }
+   */
+  /* */
+  *, ::after, ::before {
+    box-sizing: border-box;
+  }
+  
+  /*nav.nav::before {
+       content: "";
+       position: absolute;
+       border-left: 1px solid #757575;
+       min-height: 100%;
+       margin-left: 16.1%
+  }
+   */
+  .header-nav-item {
+    display: grid;
+    position: relative;
+    white-space: normal;
+    overflow: hidden;
+  }
+  
+  .header-nav-link::before {
+    overflow: visible;
+    content: "00"counter(header-nav) " ";
+  }
+  
+  .header-nav-link::after {
+    content: "";
+    counter-increment: header-nav;
+  }
+  
+  .header-info-item {
+    display: grid;
+    position: relative;
+  }
+  
+  .header.sticky {
+    position: sticky;
+    top: 0;
+  }
+  
+  input.button {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.618;
+    font-family: valorant;
+    border: none;
+    background-color: inherit;
+  }
+  
+  input.button {
+    opacity: 0.618;
+    height: 100%;
+    transition-duration: 382ms;
+    transition-property: transform;
+  }
+  
+  input.button:hover {
+      opacity: 1;
+      color: black;
+      transform: scale(1.618);
+  }
+  
+  .button.nav {
+    position: relative;
+    display: block;
+    opacity: 0.618;
+    width: 61.8%;
+    height: 100%;
+    left: 38.2%;
+    transition-duration: 382ms;
+    transition-property: transform;
+  }
+  
+  .button.nav:hover {
+    opacity: 1;
+    color: black;
+    transform: scale(1.618);
+  }
+  
+  .button.nav:hover .button-nav-item {
+    opacity: 1;
+    color: black;
+  }
+  
+  .button.nav.active .button-nav-item {
+    opacity: 1;
+    color: black;
+    transform: scale(1.618);
+    transition: opacity 618ms ease-in;
+  }
+  
+  .button-nav-item {
+    opacity: 0;
+  }
+  
+  .button-nav-item:hover {
+    opacity: 0;
+  }
+  
+  .section.nav.sticky {
+    position: sticky;
+    top: 23.6%;
+    z-index: 100;
+  }
+  
+  .section.nav {
+    counter-reset: section-nav;
+  }
+  
+  a.nav::before {
+    content: "00"counter(section-nav) " ";
+  }
+  
+  a.nav::after {
+    content: "";
+    counter-increment: section-nav;
+  }
+  
+  video {
+    max-width: 100%;
+    outline: none;
+  }
+  
+  blockquote {
+    margin-bottom: 3em;
+  }
+  
+  blockquote.text {
+    position: relative;
+    padding-left: 1rem;
+    border-left: 0.382rem solid #debe22;
+    line-height: 2.61rem;
+    font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    font-size: 1.618rem;
+    font-weight: 100;
+  }
+  
+  .section-footer.author {
+    text-align: right;
+  }
+  
+  .footer.footer-middle.center {
+    padding: 1rem 1rem 1rem 1rem;
+  }
+  
+  .float-right {
+    float: right;
+  }
+  
+  .center {
+    text-align: center;
+  }
+  
+  .right {
+    text-align: right;
+  }
+  
+  .caption {
+    padding-bottom: 1rem;
+  }
+  
+  .solid {
+    background-color: #debe22;
+  }
+  
+  a.nav {
+    display: block;
+    font-size: 1rem;
+    margin-top: 1.618em;
+    margin-bottom: 1.618em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: 400;
+    line-height: 1.618;
+    font-family: valorant;
+  }
+  
+  a.button {
+    color: initial;
+    text-decoration: none;
+  }
+  
+  a.button.nav {
+    min-width: 38.2%
+  }
+  
+  a.header-nav-link {
+    color: black;
+    text-decoration: none;
+    justify-self: center;
+    align-self: center;
+  }
+  
+  a.header-info-link {
+    font-family: Valorant;
+    color: black;
+    text-decoration: none;
+    justify-self: center;
+    align-self: center;
+  }
+  
+  .footer-social {
+    fill: #debe22;
+    padding-top: 3.82%;
+  }
+  
+  /* Water filling animation here */
+  /* */
+  #linkedin, #github, #facebook, #twitter, #google path {
+    color: #debe22;
+  }
+  
+  #linkedin:hover, #github:hover, #facebook:hover, #twitter:hover, #google:hover path {
+    transition: fill 618ms ease-in-out;
+    fill: #000000;
+  }
+  
+  h2.title {
+    font-family: Valorant;
+  }
+  
+  h1.lost {
+    font-size: 11.09rem;
+  }
+  
+  .lost {
+    font-size: 6.854rem;
+    font-family: Valorant;
+  }
+  
+  .footer-copyright {
+    font-weight: lighter;
+  }
+  
+  img {
+    max-width: 100%;
+  }
+  
+  img.signature {
+    padding-top: 3.82%;
+  }
+  
+  a:active, a:focus {
+    outline: 0;
+    border: none;
+  }
+  
+  .divider {
+    border: none;
+    text-align: center;
+  }
+  
+  .divider::before {
+    content: "...";
+    letter-spacing: 1rem;
+    font-weight: 400;
+    font-size: 2.618rem;
+    color: #debe22;
+  }
+  
+  hr {
+    margin: 1.618rem 0 1.618rem 0;
+  }
+  
+  div.paragraph {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 300;
+  }
+  
+  h3.title {
+    font-weight: 300;
+  }
+  
+  .article {
+    font-family: valorant;
+    font-weight: 300;
+  }
+  
+  .subtitle {
+    color: #757575;
+    font-weight: 300;
+  }
+  
+  #s000, #s001, #s002 {
+    padding-top: 4.24rem;
+    margin-top: -4.24rem;
+  }
+  
+  .minimal-web-link {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  .header-web-link {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .section-web-link {
+    font-family: Lucida;
+    color: black;
+    text-decoration: none;
+  }
+
+  .valorant {
+    font-family: Valorant;
+  }
+  
